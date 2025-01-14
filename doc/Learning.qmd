@@ -36,6 +36,12 @@ When you insert a code chunk "{r}" appears. You can add a name next to it (with 
 library(tidyverse)
 post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
 ```
+
+The "here::here" function defines the path of access to the data set as inside the project folder so it is not a "personal" path - Makesit more homogeneous to reuse the project file rather than have the path directory towards somewhere else in your computer.
+
+For the "read_csv2" it is because the data are separated by semicolons instead of coma.
+
+
 ## Showing the Data
 
 You can use Tab for autocompletion (giving you the name of items already define so you don't need to type them entirely)
