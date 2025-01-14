@@ -11,13 +11,11 @@ format: html
 
 I have a **PhD in Neurosciences**. I currently work as a post-doc on a project about *food-derived miRNA*.
 
-
 ## Simple Code
 
 ```{r Simple Multiplication}
 3 * 3
 ```
-
 
 ## About Git
 
@@ -26,7 +24,6 @@ Click on the Git app -\> Commit -\> Stage the file that you want to commit and t
 ### Testing Git
 
 Try to commit
-
 
 ## Setup Code Chunk
 
@@ -43,16 +40,25 @@ The "here::here" function defines the path of access to the data set as inside t
 
 For the "read_csv2" it is because the data are separated by semicolons instead of coma.
 
-"#|" is a chunk option for what you want to see in the final output documents (the html or docx or pdf). Other common options are:
-- include: Whether to include all the code, code output, messages, and warnings in the rendered output document. Default is true. Use false to hide everything but still run the code.
-- echo: To show the code. Default value is true. Use false to hide.
-results: To show the output. Default is markup. Use hide to hide or asis as regular text (not inside a code block).
-- eval: To evaluate (run) the R code in the chunk. Default value is true, while false does not run the code.
-If you want to set an option to all the code chunks (e.g. to hide all the code but keep the output), you can use Quarto’s execute options. These options are added to the YAML header and will apply the settings to everything in the document
-*execute:*
+"#|" is a chunk option for what you want to see in the final output documents (the html or docx or pdf). Here #| message and #| warning were added at the beggining of the code chunk.
+
+Other common options are:
+
+-   "include": Whether to include all the code, code output, messages, and warnings in the rendered output document. Default is true. Use false to hide everything but still run the code.
+
+-   "echo": To show the code. Default value is true. Use false to hide.
+
+-   results: To show the output. Default is markup. Use hide to hide or asis as regular text (not inside a code block). - "eval": To evaluate (run) the R code in the chunk. Default value is true, while false does not run the code.
+
+If you want to set an option to all the code chunks (e.g. to hide all the code but keep the output), you can use Quarto’s execute options. These options are added to the YAML header and will apply the settings to everything in the document.
+
+*"execute:*
+
 *echo : false*
+
 *warning : false*
-*message : false*
+
+*message : false"*
 
 
 ## Showing the Data
@@ -63,7 +69,3 @@ You can use Tab for autocompletion (giving you the name of items already define 
 post_meal_data
 glimpse(post_meal_data)
 ```
-
-
-
-
