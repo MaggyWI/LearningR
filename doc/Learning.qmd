@@ -1,0 +1,32 @@
+---
+title: "Reproducible Documents"
+author: "Ingrid M Wagnon"
+format: html
+---
+
+## Setup Code Chunk
+
+When you insert a code chunk "{r}" appears. You can add a name next to it (with a space) and it will label/name your code chunk.
+
+```{r setup}
+library(tidyverse)
+```
+
+## About me
+
+-   Ingrid M. Wagnon
+-   Roskilde University
+
+I have a **PhD in Neurosciences**. I currently work as a post-doc on a project about *food-derived miRNA*.
+
+## Simple Code
+
+```{r Simple Multiplication}
+3 * 3
+```
+
+## About Git
+Click on the GIT app -> Commit -> Stage the file that you want to comit and then the first commit entry could be "Initial Commit" -> Click "Commit"
+
+
+
