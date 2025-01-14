@@ -4,14 +4,6 @@ author: "Ingrid M Wagnon"
 format: html
 ---
 
-## Setup Code Chunk
-
-When you insert a code chunk "{r}" appears. You can add a name next to it (with a space) and it will label/name your code chunk.
-
-```{r setup}
-library(tidyverse)
-```
-
 ## About me
 
 -   Ingrid M. Wagnon
@@ -19,11 +11,13 @@ library(tidyverse)
 
 I have a **PhD in Neurosciences**. I currently work as a post-doc on a project about *food-derived miRNA*.
 
+
 ## Simple Code
 
 ```{r Simple Multiplication}
 3 * 3
 ```
+
 
 ## About Git
 
@@ -32,3 +26,25 @@ Click on the Git app -\> Commit -\> Stage the file that you want to commit and t
 ### Testing Git
 
 Try to commit
+
+
+## Setup Code Chunk
+
+When you insert a code chunk "{r}" appears. You can add a name next to it (with a space) and it will label/name your code chunk.
+
+```{r setup}
+library(tidyverse)
+post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
+```
+## Showing the Data
+
+You can use Tab for autocompletion (giving you the name of items already define so you don't need to type them entirely)
+
+```{r}
+post_meal_data
+glimpse(post_meal_data)
+```
+
+
+
+
