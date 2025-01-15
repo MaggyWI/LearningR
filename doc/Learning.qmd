@@ -133,38 +133,8 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 ```
 
 
-## Git Hub 
+## Pushing changes to remote
 
-```{r install}
-install.packages("usethis")
-```
-
-```{r install_1}
-# install.packages("pak")
-pak::pak("r-lib/usethis")
-```
-
-```{r help}
-usethis::gh_token_help()
-```
-
-```{r token}
-usethis::create_github_token()
-```
-
-```{r set credit}
-gitcreds::gitcreds_set()
-```
-
-```{r usethis_library}
-library(usethis)
-```
-
-```{r use_github}
-usethis::use_github()
-```
-
-The title thing didn't work so I had to go on the website, create repository, copy and paste into the Terminal and run.
 
 
 
