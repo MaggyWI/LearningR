@@ -1,10 +1,7 @@
 ---
 title: "Reproducible documents"
 author: "Ingrid M. Wagnon"
-format:
-  html:
-    number-sections: true
-    fig-number-sections: true
+format: html
 ---
 
 
@@ -138,28 +135,32 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 
 ## Git Hub 
 
-```{r}
+```{r install}
 install.packages("usethis")
 ```
 
-```{r}
+```{r install_1}
 # install.packages("pak")
 pak::pak("r-lib/usethis")
 ```
 
-```{r}
+```{r help}
 usethis::gh_token_help()
 ```
 
-```{r}
+```{r token}
 usethis::create_github_token()
 ```
 
-```{r}
+```{r set credit}
 gitcreds::gitcreds_set()
 ```
 
-```{r}
+```{r usethis_library}
+library(usethis)
+```
+
+```{r use_github}
 usethis::use_github()
 ```
 
