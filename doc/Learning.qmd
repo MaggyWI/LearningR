@@ -245,3 +245,24 @@ tidier_post_meal_data |>
     Group = if_else(Group == "CTR", "Control", "First-degree relative")
   )
 ```
+
+
+## Exercise with Filter and Mutate
+
+Use filter() to find how many participants have a BMI of more than or equal to 20 and less than or equal to 40, and are in the “FDR” Group. How many are there?
+
+Create a percent_body_fat column with mutate() by dividing the Fat.mass.DXA by the Weight, then multiplying by 100. Hint: In R, use * to multiply and / to divide. Then pipe to filter() to find out how many participants have a percent_body_fat greater than 30.
+
+```{r}
+# Task 1.
+
+
+
+# Task 2.
+
+
+
+```
+
+
+
