@@ -1,0 +1,320 @@
+---
+title: "Reproducible documents"
+author: "Ingrid M. Wagnon"
+format:
+  html:
+    number-sections: true
+    fig-number-sections: true
+---
+
+
+
+
+## About me
+
+-   Ingrid M. Wagnon
+-   Roskilde University
+
+I have a **PhD in Neurosciences**. I currently work as a post-doc on a project about *food-derived miRNA*.
+
+## Simple Code
+
+
+
+```{r Simple Multiplication}
+3 * 3
+```
+
+
+
+## About Git
+
+Click on the Git app -\> Commit -\> Stage the file that you want to commit and then the first commit entry could be "Initial Commit" -\> Click "Commit"
+
+### Testing Git
+
+Try to commit
+
+## Setup Code Chunk
+
+When you insert a code chunk "{r}" appears. You can add a name next to it (with a space) and it will label/name your code chunk.
+
+
+
+```{r setup}
+#| message: false
+#| warning: false
+library(tidyverse)
+
+post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
+
+small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
+
+tidier_post_meal_data <- small_post_meal_data |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  ) |>
+  filter(glykemi == 0) |>
+  select(-glykemi)
+
+tidied_post_meal_data <- tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
+```
+
+
+
+The "here::here" function defines the path of access to the data set as inside the project folder so it is not a "personal" path - Makesit more homogeneous to reuse the project file rather than have the path directory towards somewhere else in your computer.
+
+For the "read_csv2" it is because the data are separated by semicolons instead of coma.
+
+"#|" is a chunk option for what you want to see in the final output documents (the html or docx or pdf). Here #| message and #| warning were added at the beggining of the code chunk.
+
+Other common options are:
+
+-   "include": Whether to include all the code, code output, messages, and warnings in the rendered output document. Default is true. Use false to hide everything but still run the code.
+
+-   "echo": To show the code. Default value is true. Use false to hide.
+
+-   results: To show the output. Default is markup. Use hide to hide or asis as regular text (not inside a code block). - "eval": To evaluate (run) the R code in the chunk. Default value is true, while false does not run the code.
+
+If you want to set an option to all the code chunks (e.g. to hide all the code but keep the output), you can use Quarto’s execute options. These options are added to the YAML header and will apply the settings to everything in the document.
+
+*"execute:*
+
+*echo : false*
+
+*warning : false*
+
+*message : false"*
+
+
+## Showing the Data
+
+You can use Tab for autocompletion (giving you the name of items already define so you don't need to type them entirely)
+
+
+
+```{r showing_data}
+post_meal_data
+glimpse(post_meal_data)
+```
+
+
+
+
+## Plot One Continuous Variable
+
+Like many functions in R, especially the summary statistic functions like mean(), you can set the argument **na.rm = TRUE** in the geom_histogram() function, as well as in other geom_* functions.
+
+
+
+```{r BMI_histogram}
+#| fig-cap: "Distribution of BMI."
+#| label: fig-bmi-histo
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+```
+
+
+
+
+## Exercise : Discrete Plot
+
+
+
+```{r discrete_plot}
+#| fig-cap: "Group Distribution."
+#| label: fig-group-barplot
+ggplot(post_meal_data, aes(x = Group)) +
+  geom_bar()
+```
+
+
+
+See @fig-group-barplot above for a cool plot!
+
+
+## Exercise : Plotting Two Discrete variables
+
+Below "as.character" defines glykemi as character instead of a number otherwise it can't work
+
+
+
+```{r two_discrete_variables}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar(position = position_dodge())
+```
+
+```{r side-by-side-figs}
+#| label: fig-bmi-glycemia
+#| fig-cap: "BMI and glycemia, side by side."
+#| fig-subcap:
+#|   - "Distribution of BMI."
+#|   - "Number of those with glycemia."
+#| layout-ncol: 2
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+```
+
+
+
+
+## Exercise : Plotting two Continuous Variables
+
+
+
+```{r}
+#| fig-cap: "Scatterplot of BMI and the area under the curve for glucose."
+#| label: fig-bmi-auc-pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
+
+
+
+
+##GitHub
+### Pushing changes to remote
+### Pulling changes to local
+
+
+## Select Data
+
+
+```{r select}
+select(post_meal_data, Age)
+select(post_meal_data, Age, BMI, Weight)
+select(post_meal_data, -Group)
+select(post_meal_data, starts_with("PG"))
+select(post_meal_data, ends_with("DXA"))
+select(post_meal_data, contains("0"))
+```
+
+
+
+
+
+## Renaming Specific Columns
+
+
+
+```{r}
+small_post_meal_data |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  )
+```
+
+
+
+### Exercise : Select and Rename Tasks
+
+
+
+```{r}
+# Task 1.
+post_meal_data |>
+  select(contains("OGTT"))
+
+# Task 2.
+post_meal_data |>
+  select(contains(".."), -contains("...")) |>
+  rename(
+    P.Glucose.minus5.OGTT = P.Glucose..5.OGTT,
+    Insulin.minus5.OGTT.X = Insulin..5.OGTT.X
+  )
+
+# Task 3.
+post_meal_data |>
+  select(id, BMI, Length, Weight, Age) |>
+  rename(Height = Length)
+```
+
+
+
+
+## Filtering by Row
+
+
+
+```{r}
+small_post_meal_data |>
+  filter(glykemi == 1)
+
+small_post_meal_data |>
+  filter(BMI >= 25)
+
+small_post_meal_data |>
+  filter(Group == "CTR")
+```
+
+```{r}
+small_post_meal_data |>
+  filter(Group == "CTR", BMI >= 25) # This is interpreted as "&"
+```
+
+```{r}
+small_post_meal_data |>
+  filter(Group == "CTR" | BMI >= 25) # The sign "|" is for "OR"
+```
+
+
+
+
+## Modifying Columns
+
+
+
+```{r}
+tidier_post_meal_data |>
+  mutate(insulin_glucose_ratio = auc_insulin / auc_glucose)
+```
+
+
+
+
+
+For the function "if_else", the first argument in bracets is the condition you need to verify, then is true, then if false - Like in excel.
+
+
+
+```{r}
+tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
+```
+
+
+
+
+## Exercise with Filter and Mutate
+
+Use filter() to find how many participants have a BMI of more than or equal to 20 and less than or equal to 40, and are in the “FDR” Group. How many are there?
+
+Create a percent_body_fat column with mutate() by dividing the Fat.mass.DXA by the Weight, then multiplying by 100. Hint: In R, use * to multiply and / to divide. Then pipe to filter() to find out how many participants have a percent_body_fat greater than 30.
+
+
+
+```{r}
+# Task 1.
+post_meal_data |>
+  filter(BMI <= 20 & BMI >= 40 & Group == "FDR")
+
+# Task 2.
+post_meal_data |>
+  mutate(percent_body_fat = (Fat.mass.DXA / Weight) * 100) |>
+  filter(percent_body_fat > 30)
+```
+
