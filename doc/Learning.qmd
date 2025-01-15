@@ -164,7 +164,7 @@ library(usethis)
 usethis::use_github()
 ```
 
-
+The title thing didn't work so I had to go on the website, create repository, copy and paste into the Terminal and run.
 
 
 
