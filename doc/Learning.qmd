@@ -1,8 +1,11 @@
 ---
 title: "Reproducible Documents"
 author: "Ingrid M Wagnon"
-format: html
+format:
+  html:
+    number-sections: true
 ---
+
 
 ## About me
 
@@ -106,7 +109,7 @@ post_meal_data |>
 ```
 
 
-## Side by side Plots
+
 
 ```{r side-by-side-figs}
 #| label: fig-bmi-glycemia

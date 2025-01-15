@@ -103,16 +103,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About me</h2>
+<section id="about-me" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="about-me"><span class="header-section-number">1</span> About me</h2>
 <ul>
 <li>Ingrid M. Wagnon</li>
 <li>Roskilde University</li>
 </ul>
 <p>I have a <strong>PhD in Neurosciences</strong>. I currently work as a post-doc on a project about <em>food-derived miRNA</em>.</p>
 </section>
-<section id="simple-code" class="level2">
-<h2 class="anchored" data-anchor-id="simple-code">Simple Code</h2>
+<section id="simple-code" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="simple-code"><span class="header-section-number">2</span> Simple Code</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -120,16 +120,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="about-git" class="level2">
-<h2 class="anchored" data-anchor-id="about-git">About Git</h2>
+<section id="about-git" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="about-git"><span class="header-section-number">3</span> About Git</h2>
 <p>Click on the Git app -&gt; Commit -&gt; Stage the file that you want to commit and then the first commit entry could be “Initial Commit” -&gt; Click “Commit”</p>
-<section id="testing-git" class="level3">
-<h3 class="anchored" data-anchor-id="testing-git">Testing Git</h3>
+<section id="testing-git" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="testing-git"><span class="header-section-number">3.1</span> Testing Git</h3>
 <p>Try to commit</p>
 </section>
 </section>
-<section id="setup-code-chunk" class="level2">
-<h2 class="anchored" data-anchor-id="setup-code-chunk">Setup Code Chunk</h2>
+<section id="setup-code-chunk" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="setup-code-chunk"><span class="header-section-number">4</span> Setup Code Chunk</h2>
 <p>When you insert a code chunk “{r}” appears. You can add a name next to it (with a space) and it will label/name your code chunk.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -150,8 +150,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>warning : false</em></p>
 <p><em>message : false”</em></p>
 </section>
-<section id="showing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="showing-the-data">Showing the Data</h2>
+<section id="showing-the-data" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="showing-the-data"><span class="header-section-number">5</span> Showing the Data</h2>
 <p>You can use Tab for autocompletion (giving you the name of items already define so you don’t need to type them entirely)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>post_meal_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -269,8 +269,8 @@ $ glykemi                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 </div>
 </div>
 </section>
-<section id="plot-one-continuous-variable" class="level2">
-<h2 class="anchored" data-anchor-id="plot-one-continuous-variable">Plot One Continuous Variable</h2>
+<section id="plot-one-continuous-variable" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="plot-one-continuous-variable"><span class="header-section-number">6</span> Plot One Continuous Variable</h2>
 <p>Like many functions in R, especially the summary statistic functions like mean(), you can set the argument <strong>na.rm = TRUE</strong> in the geom_histogram() function, as well as in other geom_* functions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(post_meal_data, <span class="fu">aes</span>(<span class="at">x =</span> BMI)) <span class="sc">+</span></span>
@@ -292,8 +292,8 @@ Figure&nbsp;1: Distribution of BMI.
 </div>
 </div>
 </section>
-<section id="exercise-discrete-plot" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-discrete-plot">Exercise : Discrete Plot</h2>
+<section id="exercise-discrete-plot" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="exercise-discrete-plot"><span class="header-section-number">7</span> Exercise : Discrete Plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(post_meal_data, <span class="fu">aes</span>(<span class="at">x =</span> Group)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -312,8 +312,8 @@ Figure&nbsp;2: Group Distribution.
 </div>
 <p>See <a href="#fig-group-barplot" class="quarto-xref">Figure&nbsp;2</a> above for a cool plot!</p>
 </section>
-<section id="exercise-plotting-two-discrete-variables" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-plotting-two-discrete-variables">Exercise : Plotting Two Discrete variables</h2>
+<section id="exercise-plotting-two-discrete-variables" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="exercise-plotting-two-discrete-variables"><span class="header-section-number">8</span> Exercise : Plotting Two Discrete variables</h2>
 <p>Below “as.character” defines glykemi as character istead of a number otherwise it can’t work</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="sc">|&gt;</span></span>
@@ -327,9 +327,6 @@ Figure&nbsp;2: Group Distribution.
 </div>
 </div>
 </div>
-</section>
-<section id="side-by-side-plots" class="level2">
-<h2 class="anchored" data-anchor-id="side-by-side-plots">Side-by-side Plots</h2>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(post_meal_data, <span class="fu">aes</span>(<span class="at">x =</span> BMI)) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
