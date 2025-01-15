@@ -1,7 +1,10 @@
 ---
 title: "Reproducible documents"
 author: "Ingrid M. Wagnon"
-format: html
+format:
+  html:
+    number-sections: true
+    fig-number-sections: true
 ---
 
 
@@ -35,6 +38,7 @@ When you insert a code chunk "{r}" appears. You can add a name next to it (with 
 #| warning: false
 library(tidyverse)
 post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
+small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 ```
 
 The "here::here" function defines the path of access to the data set as inside the project folder so it is not a "personal" path - Makesit more homogeneous to reuse the project file rather than have the path directory towards somewhere else in your computer.
@@ -133,10 +137,20 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 ```
 
 
-## Pushing changes to remote
+##GitHub
+### Pushing changes to remote
+### Pulling changes to local
 
 
-## Pulling changes to local
+## Select Data
+```{r select}
+select(post_meal_data, Age)
+select(post_meal_data, Age, BMI, Weight)
+select(post_meal_data, -Group)
+select(post_meal_data, starts_with("PG"))
+select(post_meal_data, ends_with("DXA"))
+select(post_meal_data, contains("0"))
+```
 
 
 
