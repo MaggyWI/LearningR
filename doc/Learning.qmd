@@ -37,8 +37,24 @@ When you insert a code chunk "{r}" appears. You can add a name next to it (with 
 #| message: false
 #| warning: false
 library(tidyverse)
+
 post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
+
 small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
+
+tidier_post_meal_data <- small_post_meal_data |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  ) |>
+  filter(glykemi == 0) |>
+  select(-glykemi)
+
+tidied_post_meal_data <- tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
 
 The "here::here" function defines the path of access to the data set as inside the project folder so it is not a "personal" path - Makesit more homogeneous to reuse the project file rather than have the path directory towards somewhere else in your computer.
@@ -183,4 +199,49 @@ post_meal_data |>
 post_meal_data |>
   select(id, BMI, Length, Weight, Age) |>
   rename(Height = Length)
+```
+
+
+## Filtering by Row
+
+```{r}
+small_post_meal_data |>
+  filter(glykemi == 1)
+
+small_post_meal_data |>
+  filter(BMI >= 25)
+
+small_post_meal_data |>
+  filter(Group == "CTR")
+```
+
+
+```{r}
+small_post_meal_data |>
+  filter(Group == "CTR", BMI >= 25) # This is interpreted as "&"
+```
+
+```{r}
+small_post_meal_data |>
+  filter(Group == "CTR" | BMI >= 25) # The sign "|" is for "OR"
+```
+
+
+## Modifying Columns
+
+```{r}
+tidier_post_meal_data |>
+  mutate(insulin_glucose_ratio = auc_insulin / auc_glucose)
+```
+
+
+
+For the function "if_else", the first argument in bracets is the condition you need to verify, then is true, then if false - Like in excel.
+
+```{r}
+tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
