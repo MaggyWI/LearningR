@@ -1,9 +1,10 @@
 ---
-title: "Reproducible Documents"
-author: "Ingrid M Wagnon"
+title: "Learning R"
+author: "Ingrid M. Wagnon"
 format:
   html:
     number-sections: true
+    fig-number-sections: true
 ---
 
 
@@ -80,9 +81,9 @@ Like many functions in R, especially the summary statistic functions like mean()
 
 ```{r BMI_histogram}
 #| fig-cap: "Distribution of BMI."
-#| label: fig-bmi-histo 
+#| label: fig-bmi-histo
 ggplot(post_meal_data, aes(x = BMI)) +
-    geom_histogram()
+  geom_histogram()
 ```
 
 
@@ -104,11 +105,9 @@ Below "as.character" defines glykemi as character istead of a number otherwise i
 
 ```{r two_discrete_variables}
 post_meal_data |>
-    ggplot(aes(x = Group, fill = as.character(glykemi))) + 
-    geom_bar(position = position_dodge())
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar(position = position_dodge())
 ```
-
-
 
 
 ```{r side-by-side-figs}
@@ -126,7 +125,12 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 ```
 
 
+## Exercise : Plotting two Continuous Variables
 
-
-
-
+```{r}
+#| fig-cap: "Scatterplot of BMI and the area under the curve for glucose."
+#| label: fig-bmi-auc-pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
