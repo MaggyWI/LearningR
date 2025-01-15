@@ -1,5 +1,5 @@
 ---
-title: "Learning R"
+title: "Reproducible documents"
 author: "Ingrid M. Wagnon"
 format:
   html:
@@ -134,3 +134,45 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_point() +
   geom_smooth()
 ```
+
+
+## Git Hub 
+
+```{r}
+install.packages("usethis")
+```
+
+```{r}
+# install.packages("pak")
+pak::pak("r-lib/usethis")
+```
+
+```{r}
+usethis::gh_token_help()
+```
+
+```{r}
+usethis::create_github_token()
+```
+
+```{r}
+gitcreds::gitcreds_set()
+```
+
+```{r}
+usethis::use_github()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
