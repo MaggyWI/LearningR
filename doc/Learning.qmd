@@ -83,9 +83,16 @@ ggplot(post_meal_data, aes(x = BMI)) +
 ```
 
 
+## Exercise Discrete Plot
 
+```{r}
+#| fig-cap: "Group Distribution."
+#| label: fig-group-barplot
+ggplot(post_meal_data, aes(x = Group)) +
+  geom_bar()
+```
 
-
+See @fig-group-barplot above for a cool plot!
 
 
 
