@@ -65,7 +65,28 @@ If you want to set an option to all the code chunks (e.g. to hide all the code b
 
 You can use Tab for autocompletion (giving you the name of items already define so you don't need to type them entirely)
 
-```{r}
+```{r showing_data}
 post_meal_data
 glimpse(post_meal_data)
 ```
+
+
+## Plot One Continuous Variable
+
+Like many functions in R, especially the summary statistic functions like mean(), you can set the argument **na.rm = TRUE** in the geom_histogram() function, as well as in other geom_* functions.
+
+```{r BMI_histogram}
+#| fig_cap: "Distribution of BMI."
+#| label: fig_bmi_histo 
+ggplot(post_meal_data, aes(x = BMI)) +
+    geom_histogram()
+```
+
+
+
+
+
+
+
+
+
