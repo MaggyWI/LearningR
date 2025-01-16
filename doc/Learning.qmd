@@ -4,6 +4,8 @@ author: "Ingrid M. Wagnon"
 format:
   html:
     number-sections: true
+    fig-number-sections: true
+    tbl-number-sections: true
 ---
 
 
@@ -479,7 +481,7 @@ tidied_post_meal_data |>
 ```{r}
 #| label: tbl-mean-age-bmi
 #| tbl-cap: "Mean values of Age and BMI for each group."
-#| 
+#|
 tidied_post_meal_data |>
   group_by(Group) |>
   summarise(
@@ -495,7 +497,7 @@ tidied_post_meal_data |>
 
 ```{r}
 #| label: tbl-summary-table
-#| fig-cap: "Median values of AUC measurements by age group and family history group."
+#| tbl-cap: "Median values of AUC measurements by age group and family history group."
 
 post_meal_data |>
   # Task 2.
