@@ -292,8 +292,6 @@ tidied_post_meal_data |>
 ```
 
 
-
-
 ```{r}
 tidied_post_meal_data |>
   filter(BMI < 30) |>
@@ -400,4 +398,45 @@ post_meal_data |>
   ggplot(aes(x = auc_pg, y = auc_ins, colour = BMI)) +
   geom_point() +
   scale_colour_ghibli_c("PonyoMedium")
+```
+
+
+## Calculating Summary Statistics
+
+In R, NA values “propagate”, meaning that if there is one value missing, then the max or mean value will also be missing. When this happens, we need to tell max() to exclude any NA values from the calculation by using the argument na.rm = TRUE.
+
+```{r}
+tidied_post_meal_data |>
+  summarise(max_bmi = max(BMI))
+```
+
+```{r}
+tidied_post_meal_data |>
+  summarise(
+    max_bmi = max(BMI),
+    min_bmi = min(BMI)
+  )
+```
+
+## Summarize with group_by
+
+```{r}
+tidied_post_meal_data |>
+  group_by(Group) |>
+  summarise(
+    mean_age = mean(Age),
+    mean_bmi = mean(BMI)
+  )
+```
+
+Don't forget to ungroup after grouping
+
+```{r}
+tidied_post_meal_data |>
+  group_by(Group) |>
+  summarise(
+    mean_age = mean(Age),
+    mean_bmi = mean(BMI)
+  ) |>
+  ungroup()
 ```
