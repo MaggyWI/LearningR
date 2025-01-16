@@ -235,7 +235,6 @@ tidier_post_meal_data |>
 ```
 
 
-
 For the function "if_else", the first argument in bracets is the condition you need to verify, then is true, then if false - Like in excel.
 
 ```{r}
@@ -248,10 +247,6 @@ tidier_post_meal_data |>
 
 
 ## Exercise with Filter and Mutate
-
-Use filter() to find how many participants have a BMI of more than or equal to 20 and less than or equal to 40, and are in the “FDR” Group. How many are there?
-
-Create a percent_body_fat column with mutate() by dividing the Fat.mass.DXA by the Weight, then multiplying by 100. Hint: In R, use * to multiply and / to divide. Then pipe to filter() to find out how many participants have a percent_body_fat greater than 30.
 
 ```{r}
 # Task 1.
@@ -266,6 +261,8 @@ post_meal_data |>
 
 
 ## Visualizing with a jitter plot
+
+The "width" argument can be added to define how spread the dot are inside the geom_jitter() function.
 
 ```{r}
 tidied_post_meal_data |>
@@ -305,3 +302,19 @@ tidied_post_meal_data |>
   geom_point() +
   facet_grid(rows = vars(young))
 ```
+
+
+```{r}
+tidied_post_meal_data |>
+  filter(BMI < 30) |>
+  mutate(young = if_else(Age < 40, "Young", "Old")) |>
+  ggplot(aes(x = BMI, y = insulin_glucose_ratio, colour = Group)) +
+  geom_point() +
+  facet_grid(rows = vars(young)) +
+  labs(
+    x = "Body mass index (BMI)",
+    y = "Insulin to glucose ratio"
+  )
+```
+
+If you want to save a plot you can use ggsave() function.

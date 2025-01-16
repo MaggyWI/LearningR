@@ -782,8 +782,6 @@ Figure&nbsp;4: Scatterplot of BMI and the area under the curve for glucose.
 </section>
 <section id="exercise-with-filter-and-mutate" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="exercise-with-filter-and-mutate"><span class="header-section-number">14</span> Exercise with Filter and Mutate</h2>
-<p>Use filter() to find how many participants have a BMI of more than or equal to 20 and less than or equal to 40, and are in the “FDR” Group. How many are there?</p>
-<p>Create a percent_body_fat column with mutate() by dividing the Fat.mass.DXA by the Weight, then multiplying by 100. Hint: In R, use * to multiply and / to divide. Then pipe to filter() to find out how many participants have a percent_body_fat greater than 30.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 1.</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="sc">|&gt;</span></span>
@@ -828,6 +826,7 @@ Figure&nbsp;4: Scatterplot of BMI and the area under the curve for glucose.
 </section>
 <section id="visualizing-with-a-jitter-plot" class="level2" data-number="15">
 <h2 data-number="15" class="anchored" data-anchor-id="visualizing-with-a-jitter-plot"><span class="header-section-number">15</span> Visualizing with a jitter plot</h2>
+<p>The “width” argument can be added to define how spread the dot are inside the geom_jitter() function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>tidied_post_meal_data <span class="sc">|&gt;</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overweight =</span> <span class="fu">if_else</span>(BMI <span class="sc">&gt;=</span> <span class="dv">25</span>, <span class="st">"Overweight"</span>, <span class="st">"Not overweight"</span>)) <span class="sc">|&gt;</span></span>
@@ -887,6 +886,26 @@ Figure&nbsp;4: Scatterplot of BMI and the area under the curve for glucose.
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>tidied_post_meal_data <span class="sc">|&gt;</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(BMI <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">young =</span> <span class="fu">if_else</span>(Age <span class="sc">&lt;</span> <span class="dv">40</span>, <span class="st">"Young"</span>, <span class="st">"Old"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BMI, <span class="at">y =</span> insulin_glucose_ratio, <span class="at">colour =</span> Group)) <span class="sc">+</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(young)) <span class="sc">+</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Body mass index (BMI)"</span>,</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Insulin to glucose ratio"</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Learning_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you want to save a plot you can use ggsave() function.</p>
 </section>
 
 </main>
