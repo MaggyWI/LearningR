@@ -8,7 +8,6 @@ format:
     tbl-number-sections: true
 ---
 
-
 ## About me
 
 -   Ingrid M. Wagnon
@@ -62,7 +61,7 @@ The "here::here" function defines the path of access to the data set as inside t
 
 For the "read_csv2" it is because the data are separated by semicolons instead of coma.
 
-"#|" is a chunk option for what you want to see in the final output documents (the html or docx or pdf). Here #| message and #| warning were added at the beggining of the code chunk.
+"#\|" is a chunk option for what you want to see in the final output documents (the html or docx or pdf). Here #\| message and #\| warning were added at the beggining of the code chunk.
 
 Other common options are:
 
@@ -82,7 +81,6 @@ If you want to set an option to all the code chunks (e.g. to hide all the code b
 
 *message : false"*
 
-
 ## Showing the Data
 
 You can use Tab for autocompletion (giving you the name of items already define so you don't need to type them entirely)
@@ -92,10 +90,9 @@ post_meal_data
 glimpse(post_meal_data)
 ```
 
-
 ## Plot One Continuous Variable
 
-Like many functions in R, especially the summary statistic functions like mean(), you can set the argument **na.rm = TRUE** in the geom_histogram() function, as well as in other geom_* functions.
+Like many functions in R, especially the summary statistic functions like mean(), you can set the argument **na.rm = TRUE** in the geom_histogram() function, as well as in other geom\_\* functions.
 
 ```{r BMI_histogram}
 #| fig-cap: "Distribution of BMI."
@@ -103,7 +100,6 @@ Like many functions in R, especially the summary statistic functions like mean()
 ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
-
 
 ## Exercise : Discrete Plot
 
@@ -116,7 +112,6 @@ ggplot(post_meal_data, aes(x = Group)) +
 
 See @fig-group-barplot above for a cool plot!
 
-
 ## Exercise : Plotting Two Discrete variables
 
 Below "as.character" defines glykemi as character instead of a number otherwise it can't work
@@ -126,7 +121,6 @@ post_meal_data |>
   ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
 ```
-
 
 ```{r side-by-side-figs}
 #| label: fig-bmi-glycemia
@@ -142,7 +136,6 @@ ggplot(post_meal_data, aes(x = glykemi)) +
   geom_bar()
 ```
 
-
 ## Exercise : Plotting two Continuous Variables
 
 ```{r}
@@ -153,13 +146,10 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_smooth()
 ```
 
-
-##GitHub
-### Pushing changes to remote
-### Pulling changes to local
-
+##GitHub \### Pushing changes to remote \### Pulling changes to local
 
 ## Select Data
+
 ```{r select}
 select(post_meal_data, Age)
 select(post_meal_data, Age, BMI, Weight)
@@ -168,8 +158,6 @@ select(post_meal_data, starts_with("PG"))
 select(post_meal_data, ends_with("DXA"))
 select(post_meal_data, contains("0"))
 ```
-
-
 
 ## Renaming Specific Columns
 
@@ -202,7 +190,6 @@ post_meal_data |>
   rename(Height = Length)
 ```
 
-
 ## Filtering by Row
 
 ```{r}
@@ -216,7 +203,6 @@ small_post_meal_data |>
   filter(Group == "CTR")
 ```
 
-
 ```{r}
 small_post_meal_data |>
   filter(Group == "CTR", BMI >= 25) # This is interpreted as "&"
@@ -227,14 +213,12 @@ small_post_meal_data |>
   filter(Group == "CTR" | BMI >= 25) # The sign "|" is for "OR"
 ```
 
-
 ## Modifying Columns
 
 ```{r}
 tidier_post_meal_data |>
   mutate(insulin_glucose_ratio = auc_insulin / auc_glucose)
 ```
-
 
 For the function "if_else", the first argument in bracets is the condition you need to verify, then is true, then if false - Like in excel.
 
@@ -245,7 +229,6 @@ tidier_post_meal_data |>
     Group = if_else(Group == "CTR", "Control", "First-degree relative")
   )
 ```
-
 
 ## Exercise with Filter and Mutate
 
@@ -260,7 +243,6 @@ post_meal_data |>
   filter(percent_body_fat > 30)
 ```
 
-
 ## Visualizing with a jitter plot
 
 The "width" argument can be added to define how spread the dot are inside the geom_jitter() function.
@@ -272,7 +254,6 @@ tidied_post_meal_data |>
   geom_jitter()
 ```
 
-
 ## Plotting three or more variables
 
 ```{r}
@@ -281,7 +262,6 @@ tidied_post_meal_data |>
   ggplot(aes(x = Age, y = auc_insulin, colour = Group)) +
   geom_point()
 ```
-
 
 ```{r}
 tidied_post_meal_data |>
@@ -292,7 +272,6 @@ tidied_post_meal_data |>
   facet_grid(cols = vars(young))
 ```
 
-
 ```{r}
 tidied_post_meal_data |>
   filter(BMI < 30) |>
@@ -301,7 +280,6 @@ tidied_post_meal_data |>
   geom_point() +
   facet_grid(rows = vars(young))
 ```
-
 
 ```{r}
 tidied_post_meal_data |>
@@ -317,7 +295,6 @@ tidied_post_meal_data |>
 ```
 
 If you want to save a plot you can use ggsave() function.
-
 
 ## Exercise : Make multi-dimensional plots
 
@@ -350,11 +327,9 @@ post_meal_data |>
   facet_grid(cols = vars(insulin_insensitive))
 ```
 
-
 ## Changing colours
 
-Function scale_fill_viridis_d() for discrete variables
-Function scale_colour_viridis_c() for continuous variables : We use _colour_ instead of _fill_ in the scale_ name because, well, we are using the colour = argument. The _c at the end indicates the variable are continuous.
+Function scale_fill_viridis_d() for discrete variables Function scale_colour_viridis_c() for continuous variables : We use *colour* instead of *fill* in the scale\_ name because, well, we are using the colour = argument. The \_c at the end indicates the variable are continuous.
 
 magama, cividis, inferno
 
@@ -401,7 +376,6 @@ post_meal_data |>
   scale_colour_ghibli_c("PonyoMedium")
 ```
 
-
 ## Calculating Summary Statistics
 
 In R, NA values “propagate”, meaning that if there is one value missing, then the max or mean value will also be missing. When this happens, we need to tell max() to exclude any NA values from the calculation by using the argument na.rm = TRUE.
@@ -442,7 +416,6 @@ tidied_post_meal_data |>
   ungroup()
 ```
 
-
 ## Creating Tables
 
 ```{r}
@@ -472,7 +445,7 @@ tidied_post_meal_data |>
   group_by(Group) |>
   summarise(
     "Mean Age (yrs)" = round(mean(Age), 1),
-    "Mean BMI (kg/m^2)" = round(mean(BMI), 1)
+    "Mean BMI (kg/m²)" = round(mean(BMI), 1) # Unicode Alt+0178 for 2 expo
   ) |>
   ungroup() |>
   knitr::kable()
@@ -481,16 +454,19 @@ tidied_post_meal_data |>
 ```{r}
 #| label: tbl-mean-age-bmi
 #| tbl-cap: "Mean values of Age and BMI for each group."
-#|
+
 tidied_post_meal_data |>
   group_by(Group) |>
   summarise(
     "Mean Age (yrs)" = round(mean(Age), 1),
-    "Mean BMI (kg/m^2)" = round(mean(BMI), 1)
+    "Mean BMI (kg/m²)" = round(mean(BMI), 1) # Unicode Alt+0178 for 2 expo
   ) |>
   ungroup() |>
   knitr::kable()
 ```
+
+See @tbl-mean-age-bmi
+
 
 
 ## Exercise : Bigger Table

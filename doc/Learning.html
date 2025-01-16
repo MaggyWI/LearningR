@@ -1185,7 +1185,7 @@ Figure&nbsp;5: Two, mult-dimensional plots of our data.
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span></span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean Age (yrs)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Age), <span class="dv">1</span>),</span>
-<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m^2)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>)</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m²)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>) <span class="co"># Unicode Alt+0178 for 2 expo</span></span>
 <span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1195,7 +1195,7 @@ Figure&nbsp;5: Two, mult-dimensional plots of our data.
 <tr class="header">
 <th style="text-align: left;">Group</th>
 <th style="text-align: right;">Mean Age (yrs)</th>
-<th style="text-align: right;">Mean BMI (kg/m^2)</th>
+<th style="text-align: right;">Mean BMI (kg/m²)</th>
 </tr>
 </thead>
 <tbody>
@@ -1214,15 +1214,14 @@ Figure&nbsp;5: Two, mult-dimensional plots of our data.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>tidied_post_meal_data <span class="sc">|&gt;</span></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span></span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean Age (yrs)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Age), <span class="dv">1</span>),</span>
-<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m^2)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>)</span>
-<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>tidied_post_meal_data <span class="sc">|&gt;</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean Age (yrs)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Age), <span class="dv">1</span>),</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mean BMI (kg/m²)"</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(BMI), <span class="dv">1</span>) <span class="co"># Unicode Alt+0178 for 2 expo</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-mean-age-bmi" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mean-age-bmi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1235,7 +1234,7 @@ Table&nbsp;1: Mean values of Age and BMI for each group.
 <tr class="header">
 <th style="text-align: left;">Group</th>
 <th style="text-align: right;">Mean Age (yrs)</th>
-<th style="text-align: right;">Mean BMI (kg/m^2)</th>
+<th style="text-align: right;">Mean BMI (kg/m²)</th>
 </tr>
 </thead>
 <tbody>
@@ -1256,6 +1255,7 @@ Table&nbsp;1: Mean values of Age and BMI for each group.
 </figure>
 </div>
 </div>
+<p>See <a href="#tbl-mean-age-bmi" class="quarto-xref">Table&nbsp;1</a></p>
 </section>
 <section id="exercise-bigger-table" class="level2" data-number="22">
 <h2 data-number="22" class="anchored" data-anchor-id="exercise-bigger-table"><span class="header-section-number">22</span> Exercise : Bigger Table</h2>
