@@ -350,3 +350,54 @@ post_meal_data |>
   geom_smooth() +
   facet_grid(cols = vars(insulin_insensitive))
 ```
+
+
+## Changing colours
+
+Function scale_fill_viridis_d() for discrete variables
+Function scale_colour_viridis_c() for continuous variables : We use _colour_ instead of _fill_ in the scale_ name because, well, we are using the colour = argument. The _c at the end indicates the variable are continuous.
+
+magama, cividis, inferno
+
+```{r}
+library(viridis)
+
+# Tasks 1. and 2.
+post_meal_data |>
+  mutate(hyperglycemia = if_else(glykemi == 1, "Yes", "No")) |>
+  ggplot(aes(x = Group, fill = hyperglycemia)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_viridis_d(option = "cividis")
+
+# Tasks 3. and 4.
+post_meal_data |>
+  ggplot(aes(x = auc_pg, y = auc_ins, colour = BMI)) +
+  geom_point() +
+  scale_colour_viridis_c(option = "inferno")
+```
+
+### The ghibli palette
+
+```{r}
+# load package
+library(ghibli)
+
+# display palettes w/ names
+par(mfrow = c(9, 3))
+for (i in names(ghibli_palettes)) print(ghibli_palette(i))
+```
+
+```{r}
+# Tasks 1. and 2.
+post_meal_data |>
+  mutate(hyperglycemia = if_else(glykemi == 1, "Yes", "No")) |>
+  ggplot(aes(x = Group, fill = hyperglycemia)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_ghibli_d("KikiMedium", direction = -1)
+
+# Tasks 3. and 4.
+post_meal_data |>
+  ggplot(aes(x = auc_pg, y = auc_ins, colour = BMI)) +
+  geom_point() +
+  scale_colour_ghibli_c("PonyoMedium")
+```
