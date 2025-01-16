@@ -4,7 +4,6 @@ author: "Ingrid M. Wagnon"
 format:
   html:
     number-sections: true
-    fig-number-sections: true
 ---
 
 
@@ -480,6 +479,7 @@ tidied_post_meal_data |>
 ```{r}
 #| label: tbl-mean-age-bmi
 #| tbl-cap: "Mean values of Age and BMI for each group."
+#| 
 tidied_post_meal_data |>
   group_by(Group) |>
   summarise(
@@ -489,4 +489,38 @@ tidied_post_meal_data |>
   ungroup() |>
   knitr::kable()
 ```
+
+
+## Exercise : Bigger Table
+
+```{r}
+#| label: tbl-summary-table
+#| fig-cap: "Median values of AUC measurements by age group and family history group."
+
+post_meal_data |>
+  # Task 2.
+  filter(BMI < 30) |>
+  # Task 3.
+  mutate(
+    age_group = if_else(Age < 40, "Young", "Old"),
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  ) |>
+  # Task 4.
+  group_by(age_group, Group) |>
+  summarise(
+    "AUC c-Peptide" = round(median(auc_cp), 1),
+    "AUC Glucose" = round(median(auc_pg), 1),
+    "AUC Insulin" = round(median(auc_ins), 1)
+  ) |>
+  # Task 5.
+  rename(
+    "Age Group" = age_group,
+    "Family History" = Group
+  ) |>
+  # Task 6.
+
+  ungroup() |>
+  knitr::kable()
 ```
+
+See @tbl-summary-table, very nice table! :D
